@@ -1,13 +1,16 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+            rel="stylesheet"/>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello welcome</h1>
+<div class="v1_2">
+    <div class="v1_3"></div>
+    <span class="v1_4">WELCOME TO OUR APPLICATION</span>
+    <div class="v1_5"></div>
+</div>
 </body>
 </html>

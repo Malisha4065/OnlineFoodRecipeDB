@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class RecipeController {
-    public RecipeController() {
+    private RecipeRepository recipeRepository;
+    public RecipeController(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
     }
 
     @RequestMapping("home")

@@ -1,18 +1,30 @@
 package com.malisha.onlinefoodrecipedb.recipes;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Recipe {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private String[] steps;
-    private String[] ingredients;
+    private String steps;
+    private String ingredients;
     private float rating;
 
-    public Recipe(int id, String name, String[] steps, String[] ingredients, float rating) {
+    public Recipe(int id, String name, String steps, String ingredients, float rating) {
         this.id = id;
         this.name = name;
         this.steps = steps;
         this.ingredients = ingredients;
         this.rating = rating;
+    }
+
+    public Recipe() {
+
     }
 
     public int getId() {
@@ -31,19 +43,19 @@ public class Recipe {
         this.name = name;
     }
 
-    public String[] getSteps() {
+    public String getSteps() {
         return steps;
     }
 
-    public void setSteps(String[] steps) {
+    public void setSteps(String steps) {
         this.steps = steps;
     }
 
-    public String[] getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String[] ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 

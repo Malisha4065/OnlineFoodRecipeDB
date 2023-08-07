@@ -20,7 +20,7 @@
 
         </div>
     </nav>
-    <table style="margin-top: 60px">
+    <table style="margin-top: 60px" class="table">
         <thead>
         <tr>
             <th>name</th>
@@ -30,9 +30,17 @@
         </tr>
         </thead>
         <tbody>
+        <c:forEach items="${recipes}" var="recipe">
+            <tr>
+                <td>${recipe.name}</td>
+                <td>${recipe.rating}</td>
+                <td>${recipe.ingredients}</td>
+                <td>${recipe.steps}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
-
+    <a href="add-recipe" class="btn btn-outline-success">Add Recipe</a>
 
     <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="webjars/jquery/3.6.0/jquery.min.js"></script>

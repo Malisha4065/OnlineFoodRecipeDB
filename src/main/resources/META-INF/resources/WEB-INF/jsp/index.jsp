@@ -27,6 +27,8 @@
             <th>rating</th>
             <th>ingredients</th>
             <th>steps</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -36,6 +38,8 @@
                 <td>${recipe.rating}</td>
                 <td>${recipe.ingredients}</td>
                 <td>${recipe.steps}</td>
+                <td><a href="delete-recipe?id=${recipe.id}" class="btn btn-warning">Delete</a></td>
+                <td><a href="update-recipe?id=${recipe.id}" class="btn btn-success">Update</a></td>
             </tr>
         </c:forEach>
         </tbody>

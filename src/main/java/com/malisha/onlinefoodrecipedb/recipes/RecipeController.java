@@ -6,9 +6,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class RecipeController {
@@ -30,14 +32,14 @@ public class RecipeController {
     }
 
     @RequestMapping(value="add-recipe", method=RequestMethod.GET)
-    public String showNewTodo(ModelMap model) {
+    public String showNewRecipe(ModelMap model) {
         Recipe recipe = new Recipe();
         model.put("recipe", recipe);
         return "addrecipe";
     }
 
     @RequestMapping(value="add-recipe", method=RequestMethod.POST)
-    public String addNewTodo(ModelMap model, @Valid Recipe recipe, BindingResult result)
+    public String addNewRecipe(ModelMap model, @Valid Recipe recipe, BindingResult result)
     {
         if(result.hasErrors())  {
             return "addrecipe";
@@ -46,5 +48,28 @@ public class RecipeController {
         return "redirect:home";
     }
 
+    @RequestMapping("delete-recipe")
+    public String deleteRecipe(@RequestParam int id)
+    {
+        recipeRepository.deleteById(id);
+        return "redirect:home";
+    }
 
+    @RequestMapping(value="update-recipe", method=RequestMethod.GET)
+    public String showUpdateRecipePage(ModelMap model, @RequestParam int id)
+    {
+        Recipe recipe = recipeRepository.findById(id).get();
+        model.addAttribute("recipe", recipe);
+        return "addrecipe";
+    }
+
+    @RequestMapping(value="update-recipe", method=RequestMethod.POST)
+    public String updateRecipe(ModelMap model, @Valid Recipe recipe, BindingResult result)
+    {
+        if (result.hasErrors()) {
+            return "addrecipe";
+        }
+        recipeRepository.save(recipe);
+        return "redirect:home";
+    }
 }

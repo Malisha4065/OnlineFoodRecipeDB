@@ -12,14 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="navbar-brand">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Explore</a></li>
-            </ul>
-
-        </div>
-    </nav>
+    <%@ include file="common/navigation.jspf" %>
     <table style="margin-top: 60px" class="table">
         <thead>
         <tr>

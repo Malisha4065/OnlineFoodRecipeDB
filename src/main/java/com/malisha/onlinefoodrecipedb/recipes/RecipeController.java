@@ -1,18 +1,18 @@
 package com.malisha.onlinefoodrecipedb.recipes;
 
 import jakarta.validation.Valid;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes("name")
 public class RecipeController {
     private RecipeRepository recipeRepository;
     public RecipeController(RecipeRepository recipeRepository) {
@@ -26,11 +26,16 @@ public class RecipeController {
         return "index";
     }
 
-    @RequestMapping("welcome")
-    public String showWelcome() {
+    @RequestMapping(value="/", method = RequestMethod.GET)
+    public String showWelcomePage(ModelMap model) {
+        model.put("name", getLoggedinUsername());
         return "welcome";
     }
 
+    private String getLoggedinUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
     @RequestMapping(value="add-recipe", method=RequestMethod.GET)
     public String showNewRecipe(ModelMap model) {
         Recipe recipe = new Recipe();

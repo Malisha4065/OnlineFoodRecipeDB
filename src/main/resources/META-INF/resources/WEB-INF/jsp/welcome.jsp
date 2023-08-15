@@ -8,6 +8,8 @@
 </head>
 <body>
 <div class="v1_2">
+    <%@ include file="common/navigation.jspf" %>
+
     <div class="v1_3"></div>
     <span class="v1_4">WELCOME TO OUR APPLICATION</span>
     <div class="v1_5"></div>

@@ -21,7 +21,8 @@ public class RecipeController {
 
     @RequestMapping("home")
     public String showHomePage(ModelMap model) {
-        List<Recipe> recipes = recipeRepository.findAll();
+        String username = getLoggedinUsername();
+        List<Recipe> recipes = recipeRepository.findByUsername(username);
         model.addAttribute("recipes", recipes);
         return "index";
     }
@@ -49,6 +50,8 @@ public class RecipeController {
         if(result.hasErrors())  {
             return "addrecipe";
         }
+        String username = getLoggedinUsername();
+        recipe.setUsername(username);
         recipeRepository.save(recipe);
         return "redirect:home";
     }
@@ -74,6 +77,8 @@ public class RecipeController {
         if (result.hasErrors()) {
             return "addrecipe";
         }
+        String username = getLoggedinUsername();
+        recipe.setUsername(username);
         recipeRepository.save(recipe);
         return "redirect:home";
     }

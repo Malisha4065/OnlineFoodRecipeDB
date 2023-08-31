@@ -1,5 +1,6 @@
 package com.malisha.onlinefoodrecipedb.recipes;
 
+import com.malisha.onlinefoodrecipedb.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
